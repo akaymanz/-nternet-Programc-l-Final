@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeeDB.dbo.Department' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeeDB.dbo.Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeName" Type="varchar" MaxLength="500" />
+    <Property Name="Department" Type="varchar" MaxLength="500" />
+    <Property Name="DateOfJoining" Type="date" />
+    <Property Name="PhotoFileName" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'EmployeeDB.dbo.tbl_login' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_login">
+          <Property Name="username" Type="varchar" MaxLength="500" />
+          <Property Name="password" Type="varchar" MaxLength="500" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeeDB.dbo.Uye' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="uyeID" />
+    </Key>
+    <Property Name="uyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="varchar" MaxLength="500" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+    <Property Name="Sifre" Type="varchar" MaxLength="500" />
+    <Property Name="Adsoyad" Type="varchar" MaxLength="500" />
+    <Property Name="Foto" Type="varchar" MaxLength="500" />
+    <Property Name="UyeAdmin" Type="int" />
+  </EntityType>
+  <EntityContainer Name="EmployeeDBModelStoreContainer">
+    <EntitySet Name="Department" EntityType="Self.Department" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Department].[DepartmentId] AS [DepartmentId], 
+    [Department].[DepartmentName] AS [DepartmentName]
+    FROM [dbo].[Department] AS [Department]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Employee" EntityType="Self.Employee" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Employee].[EmployeeId] AS [EmployeeId], 
+    [Employee].[EmployeeName] AS [EmployeeName], 
+    [Employee].[Department] AS [Department], 
+    [Employee].[DateOfJoining] AS [DateOfJoining], 
+    [Employee].[PhotoFileName] AS [PhotoFileName]
+    FROM [dbo].[Employee] AS [Employee]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Uye" EntityType="Self.Uye" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Uye].[uyeID] AS [uyeID], 
+    [Uye].[KullaniciAdi] AS [KullaniciAdi], 
+    [Uye].[Email] AS [Email], 
+    [Uye].[Sifre] AS [Sifre], 
+    [Uye].[Adsoyad] AS [Adsoyad], 
+    [Uye].[Foto] AS [Foto], 
+    [Uye].[UyeAdmin] AS [UyeAdmin]
+    FROM [dbo].[Uye] AS [Uye]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

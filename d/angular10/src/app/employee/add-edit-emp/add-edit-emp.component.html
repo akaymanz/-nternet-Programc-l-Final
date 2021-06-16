@@ -1,0 +1,52 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+
+<div  class="form-froup row" style="width: 60%;">
+
+    <label class="col-sm-2 col-form-label">İşçi İsmi</label>
+    <div class="col-sm-10">
+
+        <mat-form-field class="example-full-width">
+        <mat-label>İşçi İsmi</mat-label>
+
+        <input matInput type="text"  [(ngModel)]="EmployeeName"
+        >
+    </mat-form-field>
+    </div>
+    
+    <label class="col-sm-2 col-form-label">Departman</label>
+    
+    <div class class="col-sm-10">
+        <mat-form-field appearance="fill">
+            <mat-label>Departman Seçiniz</mat-label>
+           
+       <select matNativeControl required [(ngModel)]="Department">
+           <option>--Seçiniz--</option>
+           <option *ngFor="let depName of DepartmentsList">
+               {{depName.DepartmentName}}
+           </option>
+       </select>
+       </mat-form-field>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Katılma Tarihi</label>
+    
+    <div class="col-sm-10">
+        <mat-label>Katılma Tarihi</mat-label>
+        <input matInput type="date"  [(ngModel)]="DateOfJoining">
+    </div>
+
+</div>
+<div class="ml-3 bd-highlight" style="width: 40%;">
+<img [src]=PhotoFilePath height="250px;" width="200px;">
+<input type="file" (change)="uploadPhoto($event)" class="mt-2"/>
+</div>
+</div>
+
+
+<button mat-button color="primary" (click)="addEmployee()" *ngIf="emp.EmployeeId==0" >
+    Ekle
+</button>
+
+<button mat-button color="primary" (click)="updateEmployee()" *ngIf="emp.EmployeeId!=0" >
+    Güncelle
+</button>
